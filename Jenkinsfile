@@ -1,5 +1,5 @@
 pipeline {
-    agent { slave-node { label 'node' } }
+    agent  { label 'node' } 
 
     parameters {
         choice(name: 'TERRAFORM_ACTION', choices: ['init-apply', 'destroy'], description: 'Select Terraform Action')
