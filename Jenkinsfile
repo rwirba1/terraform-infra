@@ -2,26 +2,28 @@ pipeline {
     agent  { label 'node' } 
 
     parameters {
-        choice(name: 'TERRAFORM_ACTION', choices: ['init-apply', 'destroy'], description: 'Select Terraform Action')
+        choice(name: 'TERRAFORM_ACTION', choices: ['init', 'apply', 'destroy'], description: 'Select Terraform Action')
     }
 
     stages {
-        stage('Terraform Init and Apply or Destroy') {
+        stage('Terraform Init, Apply, or Destroy') {
             steps {
                 script {
-                    if (params.TERRAFORM_ACTION == 'init-apply') {
-                        echo "Running Terraform Init and Apply"
-                        sh '''
-                           terraform init
-                           terraform apply --auto-approve
-                        '''
-                    } else if (params.TERRAFORM_ACTION == 'destroy') {
-                        echo "Running Terraform Destroy"
-                        sh '''
-                           terraform destroy --auto-approve
-                        '''
-                    } else {
-                        error "Invalid Terraform action selected"
+                    switch (params.TERRAFORM_ACTION ) {
+                       case 'init'
+                           echo "Running Terraform Init"
+                           sh 'terraform init'
+                           break
+                        case 'apply'   
+                            echo "Running Terraform Apply"
+                            sh 'terraform apply --auto-approve'
+                            break
+                        case 'destroy'
+                            echo "Running Terraform Destroy"
+                            sh 'terraform destroy --auto-approve'
+                            break
+                        default:    
+                            error "Invalid Terraform action selected"
                     }
                 }
             }
