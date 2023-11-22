@@ -14,7 +14,7 @@ pipeline {
                            echo "Running Terraform Init"
                            sh 'terraform init'
                            break
-                       case 'init':
+                       case 'validate':
                            echo "Running Terraform validate"
                            sh 'terraform validate'
                            break                           
