@@ -10,15 +10,15 @@ pipeline {
             steps {
                 script {
                     switch (params.TERRAFORM_ACTION ) {
-                       case 'init'
+                       case 'init':
                            echo "Running Terraform Init"
                            sh 'terraform init'
                            break
-                        case 'apply'   
+                        case 'apply':   
                             echo "Running Terraform Apply"
                             sh 'terraform apply --auto-approve'
                             break
-                        case 'destroy'
+                        case 'destroy':
                             echo "Running Terraform Destroy"
                             sh 'terraform destroy --auto-approve'
                             break
