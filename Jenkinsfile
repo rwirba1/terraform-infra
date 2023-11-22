@@ -2,7 +2,7 @@ pipeline {
     agent  { label 'node' } 
 
     parameters {
-        choice(name: 'TERRAFORM_ACTION', choices: ['init', 'validate', 'apply', 'destroy'], description: 'Select Terraform Action')
+        choice(name: 'TERRAFORM_ACTION', choices: ['init', 'apply', 'destroy'], description: 'Select Terraform Action')
     }
 
     stages {
@@ -13,11 +13,7 @@ pipeline {
                        case 'init':
                            echo "Running Terraform Init"
                            sh 'terraform init'
-                           break
-                       case 'plan':
-                           echo "Running Terraform validate"
-                           sh 'terraform plan'
-                           break                           
+                           break                       
                         case 'apply':   
                             echo "Running Terraform Apply"
                             sh 'terraform apply --auto-approve'
