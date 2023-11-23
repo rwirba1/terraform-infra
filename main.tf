@@ -8,7 +8,7 @@ resource "aws_security_group" "jenkins" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["72.41.0.101/32", "172.31.42.126/32"]
+    cidr_blocks = ["72.41.0.101/32", "172.31.83.250/32"]
   }
 
   ingress {
@@ -43,7 +43,7 @@ resource "aws_security_group" "nexus" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["72.41.0.101/32" , "172.31.42.126/32"]
+    cidr_blocks = ["72.41.0.101/32" , "172.31.83.250/32"]
   }
 
   ingress {
@@ -79,7 +79,7 @@ resource "aws_security_group" "sonarqube" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["72.41.0.101/32" , "172.31.42.126/32"]
+    cidr_blocks = ["72.41.0.101/32" , "172.31.83.250/32"]
   }
 
   ingress {
