@@ -1,3 +1,13 @@
+terraform {
+  backend "s3" {
+    bucket         = "ezlearn-terra-bucket"  # The S3 bucket name
+    key            = "/terraform"  # The path within the bucket
+    region         = "us-east-1"  # The AWS region
+    encrypt        = true  # Encrypt the state file in S3
+  }
+}
+
+
 resource "aws_security_group" "jenkins" {
   name        = "jenkins-security-group"
 
