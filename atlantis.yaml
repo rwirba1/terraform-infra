@@ -6,3 +6,4 @@ projects:
     autoplan:
       when_modified: ["*.tf", "*.hcl"]
       enabled: true
+    apply_requirements: []  
