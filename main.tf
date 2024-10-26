@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket         = "ezlearn-terra-bucket"  # The S3 bucket name
-    key            = "/terraform"  # The path within the bucket
+    key            = "terraform"  # The path within the bucket
     region         = "us-east-1"  # The AWS region
     encrypt        = true  # Encrypt the state file in S3
   }
@@ -18,7 +18,7 @@ resource "aws_security_group" "jenkins" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["72.41.0.101/32", "172.31.24.20/32"]
+    cidr_blocks = ["216.131.79.229/32", "172.31.24.20/32"]
   }
 
   ingress {
@@ -191,3 +191,4 @@ resource "aws_instance" "ansible-runner" {
     Name = "Ansible-runner"
   }
 }
+#
