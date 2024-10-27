@@ -147,7 +147,7 @@ resource "aws_security_group_rule" "jenkins_from_sonarqube" {
 resource "aws_instance" "jenkins" {
   ami = "ami-0fc5d935ebf8bc3bc"
   instance_type = "t2.small"
-  key_name = "techapp-key"
+  key_name = "my-key"
 
   vpc_security_group_ids = [aws_security_group.jenkins.id]
 
@@ -159,7 +159,7 @@ resource "aws_instance" "jenkins" {
 resource "aws_instance" "nexus" {
   ami = "ami-0fa1ca9559f1892ec"
   instance_type = "t2.medium"
-  key_name = "techapp-key"
+  key_name = "my-key"
 
   vpc_security_group_ids = [aws_security_group.nexus.id]
 
@@ -171,7 +171,7 @@ resource "aws_instance" "nexus" {
 resource "aws_instance" "sonarqube" {
   ami = "ami-06aa3f7caf3a30282"
   instance_type = "t2.medium"
-  key_name = "techapp-key"
+  key_name = "my-key"
 
   vpc_security_group_ids = [aws_security_group.sonarqube.id]
 
@@ -183,7 +183,7 @@ resource "aws_instance" "sonarqube" {
 resource "aws_instance" "ansible-runner" {
   ami = "ami-0fc5d935ebf8bc3bc"
   instance_type = "t2.small"
-  key_name = "techapp-key"
+  key_name = "my-key"
 
   vpc_security_group_ids = [aws_security_group.ansible.id]
 
