@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket         = "ezlearn-terra-bucket"  # The S3 bucket name
-    key            = "/terraform"  # The path within the bucket
+    key            = "terraform"  # The path within the bucket
     region         = "us-east-1"  # The AWS region
     encrypt        = true  # Encrypt the state file in S3
   }
@@ -18,7 +18,7 @@ resource "aws_security_group" "jenkins" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["72.41.0.101/32", "172.31.24.20/32"]
+    cidr_blocks = ["216.131.79.229/32", "172.31.24.20/32"]
   }
 
   ingress {
@@ -147,7 +147,7 @@ resource "aws_security_group_rule" "jenkins_from_sonarqube" {
 resource "aws_instance" "jenkins" {
   ami = "ami-0fc5d935ebf8bc3bc"
   instance_type = "t2.small"
-  key_name = "techapp-key"
+  key_name = "my-key"
 
   vpc_security_group_ids = [aws_security_group.jenkins.id]
 
@@ -159,7 +159,7 @@ resource "aws_instance" "jenkins" {
 resource "aws_instance" "nexus" {
   ami = "ami-0fa1ca9559f1892ec"
   instance_type = "t2.medium"
-  key_name = "techapp-key"
+  key_name = "my-key"
 
   vpc_security_group_ids = [aws_security_group.nexus.id]
 
@@ -171,7 +171,7 @@ resource "aws_instance" "nexus" {
 resource "aws_instance" "sonarqube" {
   ami = "ami-06aa3f7caf3a30282"
   instance_type = "t2.medium"
-  key_name = "techapp-key"
+  key_name = "my-key"
 
   vpc_security_group_ids = [aws_security_group.sonarqube.id]
 
@@ -183,7 +183,7 @@ resource "aws_instance" "sonarqube" {
 resource "aws_instance" "ansible-runner" {
   ami = "ami-0fc5d935ebf8bc3bc"
   instance_type = "t2.small"
-  key_name = "techapp-key"
+  key_name = "my-key"
 
   vpc_security_group_ids = [aws_security_group.ansible.id]
 
